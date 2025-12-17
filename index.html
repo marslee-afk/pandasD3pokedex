@@ -381,9 +381,9 @@
                 span.replaceChildren(table)
             }
         </script>
-        <script src="https://d3js.org/d3.v7.js"></script>
         <div id="graphs"></div>
         <script id="graphing">
+            import * as d3 from "d3";
             tableCSV = d3.tsvParse(tableCSV)
             console.log(tableCSV.columns)
             const stats = ['HP','Attack','Defense','Special Attack','Special Defense','Speed']
@@ -505,4 +505,5 @@
         </script>
     </body>
 </html>
+
 
