@@ -381,7 +381,7 @@
                 span.replaceChildren(table)
             }
         </script>
-        <div id="graphs"></div>
+        <div id="graphs"><noscript>Sorry, this graph requires JavaScript. :(<br>Check out the table, which requires no JavaScript!</noscript></div>
         <script src="https://d3js.org/d3.v7.js"></script>
         <script id="graphing">
             tableCSV = d3.tsvParse(tableCSV)
@@ -505,6 +505,7 @@
         </script>
     </body>
 </html>
+
 
 
 
