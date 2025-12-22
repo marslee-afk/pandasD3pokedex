@@ -341,6 +341,10 @@
                     a.href = `https://bulbapedia.bulbagarden.net/wiki/${name.split(' (')[0]}_(Pok%C3%A9mon)`
                     a.target = 'bulbapedia'
                     a.title = "Bulbapedia Link"
+                    a.name = name
+                            .replace(/ /g,'_').replace('/','').replace('(','').replace(')','')
+                            .replace("'", "-").replace('.','').replace(',','').replace(':','')
+                            .replace('%','percent')    
                     th.appendChild(a)
                 } else {
                     th.appendChild(document.createTextNode(name))
@@ -382,8 +386,9 @@
                 span.replaceChildren(table)
             }
         </script>
-        <div id="graphs"></div>
+        <div id="graphs">Downloading...</div>
         <script src="https://d3js.org/d3.v7.js"></script>
+        <script>document.querySelector('#graphs').innerText = "Graphing..."</script>
         <script id="graphing">
             tableCSV = d3.tsvParse(tableCSV)
             console.log(tableCSV.columns)
@@ -516,7 +521,7 @@
                         d3.mean(gen, (d)=>{return d[s]})].join('\n'))
                 }
             }
+            document.querySelector('div#graphs').removeChild(document.querySelector('#graphs').firstChild)
         </script>
     </body>
 </html>
-
