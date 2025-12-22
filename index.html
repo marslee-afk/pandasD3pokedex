@@ -341,10 +341,6 @@
                     a.href = `https://bulbapedia.bulbagarden.net/wiki/${name.split(' (')[0]}_(Pok%C3%A9mon)`
                     a.target = 'bulbapedia'
                     a.title = "Bulbapedia Link"
-                    a.name = name
-                            .replace(/ /g,'_').replace('/','').replace('(','').replace(')','')
-                            .replace("'", "-").replace('.','').replace(',','').replace(':','')
-                            .replace('%','percent')    
                     th.appendChild(a)
                 } else {
                     th.appendChild(document.createTextNode(name))
@@ -472,7 +468,6 @@
                 .on('mouseout', (e)=>{e.target.style.filter='brightness(100%)'})
                     .append("title")
                     .text(d=>[d['Pokemon Name'], d[s]].join('\n'))
-                
             }
             
             svg.append("g")
@@ -524,3 +519,4 @@
         </script>
     </body>
 </html>
+
