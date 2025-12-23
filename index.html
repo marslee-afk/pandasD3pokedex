@@ -396,7 +396,7 @@
             const classes = ['HP','attack','defense','spAtk','spDef','speed']
             const locations = [-0.5,-0.3,-0.1, 0.1, 0.3, 0.5] 
             let gensep = d3.group(tableCSV, (data)=>{return data.Generation})
-            const truHeight = document.querySelector('div#graphs').scrollWidth/2-10,
+            const truHeight = Math.max(150,document.querySelector('div#graphs').scrollWidth/2-10),
                   truWidth = document.querySelector('div#graphs').scrollWidth-10,
                   margin = 40,
                   height = truHeight-margin,
