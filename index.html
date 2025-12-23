@@ -137,7 +137,7 @@
             table:not(.dataframe) {
                 border-collapse: collapse;
                 vertical-align: super;
-                font-family: Times, 'Times New Roman', serif
+                font-family: 'Times New Roman', serif
             } table:not(.dataframe) > tr > td:not(td:last-child) {
                 text-align:right
             } table:not(.dataframe) > tr > td {
@@ -399,8 +399,8 @@
             const truHeight = document.querySelector('div#graphs').scrollWidth/2-10,
                   truWidth = document.querySelector('div#graphs').scrollWidth-10,
                   margin = 40,
-                  height = truHeight-margin*2,
-                  width = truWidth-margin,
+                  height = truHeight-margin,
+                  width = truWidth-margin/2,
                   ra = document.querySelector('div#graphs').scrollWidth/200
             console.log(truWidth+10, ra)
             
@@ -410,13 +410,13 @@
                     .attr("height", truHeight)
                     .append("g")
                     .attr("transform",
-                        "translate(" + margin/2 + "," + margin + ")");
+                        "translate(" + margin/4 + "," + 5 + ")");
             let x = d3.scaleLinear()
                 .domain([0.5, 9.5])
                 .range([margin, width]);
             svg.append("g")
-                .attr("transform", `translate(0,${height})`)
                 .call(d3.axisBottom(x))
+                .attr("transform", `translate(0,${height})`)
                 .append("title")
                     .text("Generation Introduced")
 
@@ -425,20 +425,26 @@
                 .range([height, 0]);
             svg.append("g")
                 .call(d3.axisLeft(y))
-                .attr('transform', `translate(${margin},0)`);
+                .attr('transform', `translate(${margin},0)`)
+                .append("title")
+                    .text("Bast Stat Value")
             
             svg.append("text")
                 .attr("text-anchor", "middle")
                 .attr("x", width/2)
                 .attr("y", height+30)
-                .text("Generation Introduced");
+                .text("Generation Introduced")
+                .append("title")
+                    .text("Generation Introduced");
             
             svg.append("text")
                 .attr("text-anchor", "middle")
                 .attr("y", margin/4)
                 .attr("x", -height/2)
                 .attr("transform", "rotate(-90)")
-                .text("Base Stat Value");
+                .text("Base Stat Value")
+                .append("title")
+                    .text("Base Stat Value");
 
 
             for (const i in stats) {
@@ -525,4 +531,3 @@
         </script>
     </body>
 </html>
-
